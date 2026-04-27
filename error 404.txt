@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>404 - Page Not Found</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #1a1a1a url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
+    .overlay {
+      background: rgba(0,0,0,0.6);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: rgba(20,20,20,0.85);
+      padding: 40px;
+      width: 350px;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    h1 {
+      font-size: 72px;
+      margin: 0;
+      color: #ff4444;
+    }
+    p {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+    a {
+      color: #007bff;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    a:hover {
+      color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="overlay">
+  <div class="container">
+    <h1>404</h1>
+    <p>Something went wrong.</p>
+    <p>Please click <a href="https://abanob015521-max.github.io/">here</a> to try again.</p>
+  </div>
+</div>
+
+</body>
+</html>
